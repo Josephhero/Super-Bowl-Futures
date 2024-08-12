@@ -7,6 +7,8 @@ library(lubridate)
 
 api_key= Sys.getenv("ODDS_API_KEY")
 
+print("Next line should be API Key")
+
 print(api_key)
 
 
