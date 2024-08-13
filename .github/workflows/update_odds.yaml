@@ -22,14 +22,15 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
-      - name: Hello world action
-        with: # Set the secret as an input
-          odds_api_secret_input: ${{ secrets.ODDS_API_KEY }}
+      - name: Set Key as enviroment variable
+       # with: # Set the secret as an input
+       #   odds_api_secret_input: ${{ secrets.ODDS_API_KEY }}
         env: # Or as an environment variable
           odds_api_secret_input_env: ${{ secrets.ODDS_API_KEY }}
+        run: echo "The API key is "$odds_api_secret_input_env"
 
-      - name: Use Secret in Workflow
-        run: echo "The API key is ${{ secrets.ODDS_API_KEY }}"
+      #- name: Use Secret in Workflow
+      #  run: echo "The API key is ${{ secrets.ODDS_API_KEY }}"
 
       - name: Import offense data
         run: Rscript -e 'source("R/sb_odds.R")'
