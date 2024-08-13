@@ -26,10 +26,10 @@ jobs:
        # with: # Set the secret as an input
        #   odds_api_secret_input: ${{ secrets.ODDS_API_KEY }}
         env: # Or as an environment variable
-          odds_api_secret_input_env: ${{ secrets.ODDS_API_KEY }}
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: |
-          echo "$odds_api_secret_input_env"
-          echo "$odds_api_secret_input_env" | sed 's/./& /g'
+          echo "$ODDS_API_KEY"
+          echo "$ODDS_API_KEY" | sed 's/./& /g'
           echo ${{secrets.ODDS_API_KEY}} | sed 's/./& /g'
 
       #- name: Use Secret in Workflow
