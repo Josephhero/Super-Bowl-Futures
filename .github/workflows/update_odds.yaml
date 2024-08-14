@@ -32,7 +32,7 @@ jobs:
       #- name: Use Secret in Workflow
       #  run: echo "The API key is ${{ secrets.ODDS_API_KEY }}"
 
-      - name: Import offense data
+      - name: Update Super Bowl Odds
         run: Rscript -e 'source("R/sb_odds.R")'
 
       - name: Commit results
