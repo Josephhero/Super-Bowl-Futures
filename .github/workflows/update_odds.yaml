@@ -23,14 +23,11 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set Key as enviroment variable
-       # with: # Set the secret as an input
-       #   odds_api_secret_input: ${{ secrets.ODDS_API_KEY }}
         env: # Or as an environment variable
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: |
           echo "$ODDS_API_KEY"
           echo "$ODDS_API_KEY" | sed 's/./& /g'
-          echo ${{secrets.ODDS_API_KEY}} | sed 's/./& /g'
 
       #- name: Use Secret in Workflow
       #  run: echo "The API key is ${{ secrets.ODDS_API_KEY }}"
