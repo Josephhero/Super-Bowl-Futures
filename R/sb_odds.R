@@ -24,6 +24,7 @@ super_bowl_lines <- toa_sports_odds(
   mutate(pull_date = date(Sys.Date())) |> 
   mutate(super_bowl_year = year(commence_time) - 1) |> 
   mutate(super_bowl_date = as_datetime(commence_time)) |> 
+  mutate(bookmaker_last_update = as_datetime(bookmaker_last_update)) |> 
   filter(bookmaker == "DraftKings") |> 
   select(week_of_year, pull_date, sport_title, 
          super_bowl_year, 
@@ -44,6 +45,10 @@ write_csv(combined_sb_odds,
           paste0("Data/", 
                  sb_year, 
                  "_super_bowl_odds.csv"))
+
+
+
+  
 
 
 
