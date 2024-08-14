@@ -32,7 +32,10 @@ super_bowl_lines <- toa_sports_odds(
 
 sb_year <- super_bowl_lines$super_bowl_year[1]
 
-sb_odds_gh <- read_csv(paste0(""))
+sb_odds_gh <- read_csv(
+  paste0("https://github.com/Josephhero/Super-Bowl-Odds/raw/main/Data/", 
+         sb_year, 
+         "_super_bowl_odds.csv"))
 
 combined_sb_odds <- bind_rows(sb_odds_gh, super_bowl_lines)
 
