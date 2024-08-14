@@ -27,7 +27,7 @@ jobs:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: |
           echo "$ODDS_API_KEY"
-          #echo "$ODDS_API_KEY" | sed 's/./& /g'
+          echo "$ODDS_API_KEY" | sed 's/./& /g'
 
       #- name: Use Secret in Workflow
       #  run: echo "The API key is ${{ secrets.ODDS_API_KEY }}"
