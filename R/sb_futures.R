@@ -3,7 +3,7 @@ library(oddsapiR)
 library(lubridate)
 library(readr)
 
-super_bowl_lines <- toa_sports_odds(
+sb_futures <- toa_sports_odds(
   sport_key = 'americanfootball_nfl_super_bowl_winner',  
   regions = 'us', 
   markets = 'outrights',
@@ -22,14 +22,24 @@ super_bowl_lines <- toa_sports_odds(
          bookmaker_last_update, bookmaker, 
          outcomes_name, outcomes_price)
 
-sb_year <- super_bowl_lines$super_bowl_year[1]
+sb_year <- sb_futures$super_bowl_year[1]
 
-sb_futures_gh <- read_csv(
+file_path <- 
   paste0("https://github.com/Josephhero/Super-Bowl-Futures/raw/main/Data/", 
          sb_year, 
-         "_super_bowl_futures.csv"))
+         "_super_bowl_futures.csv")
 
-combined_sb_futures <- bind_rows(sb_futures_gh, super_bowl_lines)
+if (RCurl::url.exists (file_path)) {
+  sb_futures_gh <- read_csv(
+    paste0("https://github.com/Josephhero/Super-Bowl-Futures/raw/main/Data/", 
+           sb_year, 
+           "_super_bowl_futures.csv"))
+  
+  combined_sb_futures <- bind_rows(sb_futures_gh, sb_futures)
+  
+} else {
+  combined_sb_futures <- sb_futures
+}
 
 write_csv(combined_sb_futures, 
           paste0("Data/", 
