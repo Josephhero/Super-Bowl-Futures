@@ -32,9 +32,9 @@ sb_futures_gh <- read_csv(
          sb_year, 
          "_super_bowl_futures.csv"))
 
-combined_sb_odds <- bind_rows(sb_futures_gh, super_bowl_lines)
+combined_sb_futures <- bind_rows(sb_futures_gh, super_bowl_lines)
 
-write_csv(combined_sb_odds, 
+write_csv(combined_sb_futures, 
           paste0("Data/", 
                  sb_year, 
                  "_super_bowl_futures.csv"))
