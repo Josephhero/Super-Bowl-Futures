@@ -3,9 +3,6 @@ library(oddsapiR)
 library(lubridate)
 library(readr)
 
-# Saved to GitHub here: 
-# https://github.com/Josephhero/Super-Bowl-Odds/tree/main
-
 super_bowl_lines <- toa_sports_odds(
   sport_key = 'americanfootball_nfl_super_bowl_winner',  
   regions = 'us', 
